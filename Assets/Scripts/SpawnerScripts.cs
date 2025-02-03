@@ -4,13 +4,8 @@ using UnityEngine;
 
 public class SpawnerScripts : MonoBehaviour
 {
-    public GameObject Bullet;
-    public GameObject Shield;
-    public float minSpawnInterval = 1f;
-    public float maxSpawnInterval = 3f;
-    public float minShieldSpawnInterval = 15f;
-    public float maxShieldSpawnInterval = 20f;
-    public GameObject targetObject;
+    public GameObject Bullet, Shield, ShieldZeppelin, targetObject;
+    public float minSpawnInterval = 1f, maxSpawnInterval = 3f, minShieldSpawnInterval = 20f, maxShieldSpawnInterval = 35f;
 
 
     void Start()
@@ -43,7 +38,7 @@ public class SpawnerScripts : MonoBehaviour
 
     void SpawnShield()
     {
-        if (targetObject != null)
+        if (targetObject != null && !ShieldZeppelin.activeSelf)
         {
             Instantiate(Shield, transform.position, targetObject.transform.rotation);
         }

@@ -4,22 +4,23 @@ using UnityEngine;
 
 public class ZeppelinManager : MonoBehaviour
 {
-    public GameObject DeadS;
-    public GameObject DeadB;
+    public Canvas GameCanvas, DeadCanvas;
     void Start()
     {
-        DeadS.SetActive(false);
-        DeadB.SetActive(false);
+        CanvasControl(GameCanvas, DeadCanvas);
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.tag == "Bullet")
         {   
-            DeadB.SetActive(true);
-            DeadS.SetActive(true);
+            CanvasControl(DeadCanvas, GameCanvas);
             Time.timeScale = 0f;
         }
     }
 
-
+    void CanvasControl(Canvas open, Canvas close)
+    {
+        open.gameObject.SetActive(true);
+        close.gameObject.SetActive(false);
+    }
 }
